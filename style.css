@@ -1,6 +1,94 @@
 /* css use BEM notation */
 
-/* Custom Properties */
-:root {
-    --clr-accent: #5c52a8;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
+
+/* Variable Declarations */
+:root {
+    --ff-primary: ;
+    --ff-secondary: ;
+
+    --fw-reg: 300;
+    --fw-bold: 900;
+
+    --clr-light: #fff;
+    --clr-dark: #000;
+    --clr-accent: #5c52a8;
+
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+}
+
+@media (min-width: 800px){
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.125rem;
+    }
+}
+
+/* General Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-reg);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+}
+
+section {
+    padding: 1em 2em;
+}
+
+img {
+    display:block;
+    max-width: 40%; /* this may change */
+}
+
+:focus {
+    outline: 3px solid var(--clr-dark);
+    outline-offset: 2px;
+}
+
+/* Typeography */
+
+h1, h2, h3 {
+    line-height: 1;
+    margin: 0;
+}
+
+h1 {font-size: var(--fs-h1)}
+h2 {font-size: var(--fs-h2)}
+h3 {font-size: var(--fs-h3)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
