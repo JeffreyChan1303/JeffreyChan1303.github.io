@@ -162,19 +162,52 @@ a {
 
 /* intro section */
 
-.intro {
-    position: relative; /* this changes to fixed when animationis finished */
+@keyframes scroll-out {
+    0% {
+        transform: translate3d(0vw, 0vh, 0vw) scale3d(1, 1, 1) 
+        rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        filter: blur(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0vw, 0vh, 0vw) scale3d(1, 1, 1) 
+        rotateX(8deg) rotateY(-8deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        filter: blur(10px);
+        opacity: 0;
+    }
+}
+@keyframes scroll-in {
+    0% {
+        transform: translate3d(0vw, 0vh, 0vw) scale3d(1, 1, 1) 
+        rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        filter: blur(10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0vw, 0vh, 0vw) scale3d(1, 1, 1) 
+        rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
 
+.intro {
+    position: fixed; /* this changes to fixed when animationis finished */
+    top: 30vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
 }
 
 .section__title--intro {
-    padding-left: 1em;
-    padding-right: 1em;
-    margin-top: 15rem;
-    margin-bottom: .5em;
     font-size: calc(var(--fs-h1) * 1.2);
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
@@ -183,9 +216,20 @@ a {
     margin-bottom: 15rem;
 }
 
-
 @keyframes intro-animation {
     0% {
+        transform: translate3d(0vw, 0vh, 0vw) scale3d(1, 1, 1) 
+        rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        opacity: 1;
+    }
+    33% {
+        transform: translate3d(5vw, 0vh, -30vw) scale3d(.5, .5, .5) 
+        rotateX(0deg) rotateY(90deg) rotateZ(0deg) skew(5deg, 0deg);
+        transform-style: preserve-3d;
+        opacity: 0;
+    }
+    66%{
         transform: translate3d(5vw, -30vh, -15vw) scale3d(.5, .5, .5) 
         rotateX(0deg) rotateY(90deg) rotateZ(0deg) skew(0deg, 0deg);
         transform-style: preserve-3d;
@@ -201,37 +245,18 @@ a {
 
 .animation {
     position: relative;
-    opacity: 0;
-    animation: 2s ease-out 0ms 1 intro-animation;
-}
-
-.animation div {
-    transform: translate3d(0vw, 0vh, 0vw) scale3d(1, 1, 1) 
-    rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-    transform-style: preserve-3d;
-    opacity: 1;
+    animation: intro-animation 2s ease-out 0s 1;
 }
 
 .animation--7th {
     margin-right: 1.75rem;
 }
 
-.intro-transition {
-    will-change: filter, transfrom, opacity;
-    filter: blur(0px);
-    /* Use javascript to transform this transformation to life */
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) 
-    rotateX(0deg) rotateZ(0deg) skew(0deg, 0deg); 
-    transform-style: preserve-3d;
-    opacity: 1;
-}
-
-
 /* education section */
 
 .education {
     max-width: 1000px;
-    margin: 4rem auto;
+    margin: 115vh auto 4rem;
 }
 
 @media (min-width: 700px) {
@@ -361,46 +386,4 @@ a {
     gap: 1em;
     padding: .5em;
 }
-
-
-
-
-/* loader */
-
-/* .loader__wrapper {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--clr-dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.loader {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    border: 4px solid white;
-    animation: loader 2s infinite ease;
-}
-
-.loader__inner {
-    vertical-align: top;
-    display: inline-block;
-    width: 100%;
-    background-color: var(--clr-light);
-    animation: loader__inner 2s infinite ease-in;
-} */
-
-
-
-
-
-
-
-
 
