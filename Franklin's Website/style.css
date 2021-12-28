@@ -14,9 +14,9 @@
     --fw-reg: 300;
     --fw-bold: 900;
 
-    --clr-light: #fff;
+    --clr-light: #e7ddce;
     --clr-dark: #000;
-    --clr-accent: #5c52a8;
+    --clr-accent: #939ef0;
 
     --fs-h1: 3rem;
     --fs-h2: 2.25rem;
@@ -50,11 +50,12 @@ body {
 
 section {
     padding: 1em 2em;
+    position: relative;
 }
 
 img {
     display:block;
-    max-width: 40%; /* this may change */
+    max-width: 75%;
 }
 
 :focus {
@@ -72,3 +73,28 @@ h1, h2, h3 {
 h1 {font-size: var(--fs-h1)}
 h2 {font-size: var(--fs-h2)}
 h3 {font-size: var(--fs-h3)}
+
+
+/* background */
+
+.background {
+    position: fixed;
+    z-index: -1;
+    filter: blur(2px);
+    opacity: .60;
+}
+
+.background__img {
+    margin: 0 auto;
+}
+
+.index {
+    position: relative;
+    z-index: 10000;
+}
+
+/* about section */
+
+.about {
+    margin-top: 100vh;
+}

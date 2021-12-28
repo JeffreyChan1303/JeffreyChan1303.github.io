@@ -110,7 +110,7 @@ h3 { font-size: var(--fs-h3) }
 }
 
 .section__title--intro {
-  font-weight: var(--rw-reg)
+  font-weight: var(--fw-reg)
 }
 
 .section__title--intro strong {
@@ -409,7 +409,7 @@ header {
 }
 
 .portfolio__item:focus {
-  position: relatice;
+  position: relative;
   z-index: 2;
 }
 
