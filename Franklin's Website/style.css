@@ -106,6 +106,7 @@ header {
     right: 0;
     z-index: 1000;
     overflow-y: auto;
+    overflow-x: hidden;
 
 
     transform: translateY(-100%);
