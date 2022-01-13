@@ -386,6 +386,7 @@ display: inline;
     bottom: 0;
     z-index: -100;
 
+    opacity: 0;
     transition: 1000ms ease-in-out;
 }
 
