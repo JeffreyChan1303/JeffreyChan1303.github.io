@@ -167,13 +167,13 @@ arrowDown.addEventListener('click', () =>{
 const originalColor = document.querySelector('.background');
 function statisticsBackgroundColor(object, currentIndex) {
     if (object[currentIndex].classList.contains('statistics__youtube')) {
-        statisticsBackground.style.background = '#FF000090';
+        statisticsBackground.style.background = 'rgb(170, 30, 30)';
     }
     if (object[currentIndex].classList.contains('statistics__instagram')) {
-        statisticsBackground.style.background = 'radial-gradient(circle at 100% 15%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%)';
+        statisticsBackground.style.background = 'rgb(105,90,130)';
     }
     if (object[currentIndex].classList.contains('statistics__tiktok')) {
-        statisticsBackground.style.background = 'black';
+        statisticsBackground.style.background = 'rgb(31,31,31)';
     }
 }
 
