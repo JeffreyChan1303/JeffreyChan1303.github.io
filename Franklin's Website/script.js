@@ -129,13 +129,7 @@ fetch(`https://graph.instagram.com/me/insights?fields=impressions,reach,follower
     .then(res => res.json())
     .then(data => console.log(data))
 
-// fetch(`https://graph.instagram.com/40969919402?fields=id,media_type,media_url,username,timestamp&access_token=${instagramToken}`)
-//     .then(res => res.json())
-//     .then(data => console.log(data))
-    //access token = IGQVJVWjRjSmE4aTAzMV9jcGN0TG9vYzE5ZA3p0OFpnRk1lUk1mVHRJUUJ4MmVqRk9fRlY2dFE3WkVMS0U1bXptQjBSQnNYak5kdEZAwakYwVFhNMDNyeUZATM0tGM25wSGF3OEktOXVBd0dRajZAaQjhHegZDZD
 
-
-//
 // Content change buttons
 
 const slider = document.querySelectorAll('.statistics');
