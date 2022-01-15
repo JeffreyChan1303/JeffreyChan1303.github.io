@@ -1,8 +1,7 @@
 const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelectorAll('.nav__link')
+const navLinks = document.querySelectorAll('.nav__link');
 
-// quick links window animation
-
+// navigation window animation
 
 navLinks[0].style.opacity = '0';
 
@@ -32,11 +31,8 @@ navToggle.addEventListener('click', () => {
             objectCount += 1;
         }
     }
-    console.log(navOpenCount);
     navOpenCount += 1;
 })
-
-
 
 // Intro animation
 
@@ -44,7 +40,6 @@ const introBars = document.querySelectorAll('.intro__text');
 const introParts = document.querySelectorAll('.intro__part');
 const intro = document.querySelector('.intro');
 const statistics = document.querySelector('.section__statistics');
-
 
 window.addEventListener('scroll', () => {
     let scrolled = window.scrollY;
@@ -77,8 +72,6 @@ window.addEventListener('scroll', () => {
         intro.style.opacity = '1';
     }
 
-    // scrole down text
-
     // statistics section appearance
 
     if (rate > 1.2) {
@@ -90,13 +83,16 @@ window.addEventListener('scroll', () => {
 
 })
 
-// working with fetch
+// Youtube and Instagram APIs
 
-fetch('https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UC-4zDbwRwcpxzQ0xN27aSmQ&key=AIzaSyBON-BmmukGYkb58Ebh8UFcC0tb8Mp0Qf8&HTTP/1.1')
+const youtubeToken = 'AIzaSyBON-BmmukGYkb58Ebh8UFcC0tb8Mp0Qf8';
+const youtubeId = 'UC-4zDbwRwcpxzQ0xN27aSmQ';
+
+fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeId}&key=${youtubeToken}&HTTP/1.1`)
     .then(res => res.json())
     .then(data => {
-        let views = data.items[0].statistics.viewCount
-        let subscribers = data.items[0].statistics.subscriberCount
+        let views = data.items[0].statistics.viewCount;
+        let subscribers = data.items[0].statistics.subscriberCount;
 
         const youtubeSubs = document.querySelector('.youtube__subscribers');
         youtubeSubs.append(subscribers);
@@ -104,77 +100,94 @@ fetch('https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UC-
         youtubeViews.append(views);
     })
 
-const token = "IGQVJVWjRjSmE4aTAzMV9jcGN0TG9vYzE5ZA3p0OFpnRk1lUk1mVHRJUUJ4MmVqRk9fRlY2dFE3WkVMS0U1bXptQjBSQnNYak5kdEZAwakYwVFhNMDNyeUZATM0tGM25wSGF3OEktOXVBd0dRajZAaQjhHegZDZD"
-fetch(`https://graph.instagram.com/me/media?fields=id,caption&access_token=${token}`)
+fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeId}&key=${youtubeToken}`)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        const uploadPlaylistId = data.items[0].contentDetails.relatedPlaylists.uploads;
+
+        fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadPlaylistId}&key=${youtubeToken}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.items[0].snippet);
+                const video1 = data.items[0].snippet;
+                const video2 = data.items[1].snippet;
+                console.log(video1.thumbnails.maxres.url)
+            })
+    })
+
+
+
+const instagramToken = "IGQVJVWjRjSmE4aTAzMV9jcGN0TG9vYzE5ZA3p0OFpnRk1lUk1mVHRJUUJ4MmVqRk9fRlY2dFE3WkVMS0U1bXptQjBSQnNYak5kdEZAwakYwVFhNMDNyeUZATM0tGM25wSGF3OEktOXVBd0dRajZAaQjhHegZDZD"
+const instagramId = '40969919402';
+
+fetch(`https://graph.instagram.com/me/media?fields=id,caption,media-type,permalink,thumbnail_url,username,media&access_token=${instagramToken}`)
     .then(res => res.json())
     .then(data => console.log(data))
 
-fetch(`https://graph.instagram.com/me?fields=id,username&access_token=${token}`)
+fetch(`https://graph.instagram.com/me/insights?fields=impressions,reach,follower-count&access_token=${instagramToken}`)
     .then(res => res.json())
     .then(data => console.log(data))
 
-
+// fetch(`https://graph.instagram.com/40969919402?fields=id,media_type,media_url,username,timestamp&access_token=${instagramToken}`)
+//     .then(res => res.json())
+//     .then(data => console.log(data))
     //access token = IGQVJVWjRjSmE4aTAzMV9jcGN0TG9vYzE5ZA3p0OFpnRk1lUk1mVHRJUUJ4MmVqRk9fRlY2dFE3WkVMS0U1bXptQjBSQnNYak5kdEZAwakYwVFhNMDNyeUZATM0tGM25wSGF3OEktOXVBd0dRajZAaQjhHegZDZD
 
-// Working with DOM manipulation and adding content into html using jabascript
 
-
-
-// double sided queue for slider animation
+//
+// Content change buttons
 
 const slider = document.querySelectorAll('.statistics');
 const arrowUp = document.querySelector('.content-up');
 const arrowDown = document.querySelector('.content-down');
 const statisticsBackground = document.querySelector('.section__statistics');
-const platformLogo = document.querySelectorAll('.platform-logo')
+const platformLogo = document.querySelectorAll('.platform-logo');
 
 let current = 0;
-for (let i in slider) {
-    console.log(i);
-}
-
 
 arrowUp.addEventListener('click', () =>{
-    slider[current].style.opacity = '0';
-    slider[current].style.zIndex = '0';
-    platformLogo[current].style.opacity = '0';
-    platformLogo[current].style.zIndex = '0';
+    hide(slider[current]);
+    hide(platformLogo[current])
     current = current - 1;
     if (current < 0) {current = 2};
-    slider[current].style.opacity = '1';
-    slider[current].style.zIndex = '1';
-    platformLogo[current].style.opacity = '1';
-    platformLogo[current].style.zIndex = '1';
+    show(slider[current]);
+    show(platformLogo[current]);
 
     statisticsBackgroundColor(slider, current);
 })
 
 arrowDown.addEventListener('click', () =>{
-    slider[current].style.opacity = '0';
-    slider[current].style.zIndex = '0';
-    platformLogo[current].style.opacity = '0';
-    platformLogo[current].style.zIndex = '0';
+    hide(slider[current]);
+    hide(platformLogo[current]);
     current = current + 1;
     if (current > 2) {current = 0};
-    slider[current].style.opacity = '1';
-    slider[current].style.zIndex = '1';
-    platformLogo[current].style.opacity = '1';
-    platformLogo[current].style.zIndex = '1';
+    show(slider[current]);
+    show(platformLogo[current]);
 
     statisticsBackgroundColor(slider, current);
 })
 
 const originalColor = document.querySelector('.background');
+
 function statisticsBackgroundColor(object, currentIndex) {
     if (object[currentIndex].classList.contains('statistics__youtube')) {
         statisticsBackground.style.background = 'rgb(170, 30, 30)';
     }
     if (object[currentIndex].classList.contains('statistics__instagram')) {
-        statisticsBackground.style.background = 'rgb(105,90,130)';
+        statisticsBackground.style.background = 'rgb(105,90,170)';
     }
     if (object[currentIndex].classList.contains('statistics__tiktok')) {
-        statisticsBackground.style.background = 'rgb(31,31,31)';
+        statisticsBackground.style.background = 'rgb(45,45,60)';
     }
 }
 
+function hide(object) {
+    object.style.opacity = '0';
+    object.style.zIndex = '0';
+}
 
+function show(object) {
+    object.style.opacity = '1';
+    object.style.zIndex = '1';
+}
