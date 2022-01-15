@@ -1,36 +1,20 @@
-// java script code, use camel case
-
-const creatorWebsiteLink = document.querySelector('.creator-website__link');
-const animations = document.querySelectorAll('.animation');
-
 // animation for the intro
 
-
+const animations = document.querySelectorAll('.animation');
 
 for (let i = 0; i < animations.length; i++) {
         let e = animations[i];
         e.style.animation = '2s ease-out '+ (i*100) +'ms 1 intro-animation';
 }
 
-
-// for (let i = 0; i < animations.length; i++) {
-//     let r = animations[i];
-//     r.style.opacity = '1';
-// }
-
-
-creatorWebsiteLink.addEventListener('click', () => {
-    document.body.classList.add('creator-website--opened')
-});
-
 // prallax for intro
 
 const vh = window.innerHeight;
+const target = document.querySelector('.intro');
 
 window.addEventListener('scroll', () => {
-    const target = document.querySelector('.intro');
-    var scrolled = window.pageYOffset;
-    var rate = scrolled / vh;
+    let scrolled = window.pageYOffset;
+    let rate = scrolled / vh;
 
     target.style.transform = `translate3d( 0vw, ${-10*rate}vh, `+10*rate+`vw) scale3d( ${1 - .5*rate}, ${1 - .5*rate}, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew( ${-5 * rate}deg, 0deg)`;
     target.style.opacity = 1 - rate + '';
@@ -44,71 +28,66 @@ window.addEventListener('scroll', () => {
 
 })
 
-// hamburger 
-
-const navToggle = document.querySelector('.nav-toggle');
-const hamburgerBarOne = document.querySelector('.hamberger__bar--one');
-const hamburgerBarTwo = document.querySelector('.hamberger__bar--two'); // delete these if not needed
-const header = document.querySelector('header')
-navToggle.addEventListener('click', () => {
-    header.classList.toggle('hamberger-open');
-})
-
-
 
 //animation for sections 
 
+const education = document.querySelector('.education');
+const games = document.querySelector('.games');
+const creatorWebsite = document.querySelector('.creator-website');
+const img = document.getElementsByTagName('img');
+
+
 window.addEventListener('scroll', () => {
-    const education = document.querySelector('.education');
-    const games = document.querySelector('.games');
-    const creatorWebsite = document.querySelector('.creator-website');
+    let educationTopPosition = education.getBoundingClientRect().top / vh - 1; //position of the top of the element relative to the bottom of the window!!
+    let educationBottomPosition = education.getBoundingClientRect().bottom / vh; // after there is only 15vh in sight of the ovject, begin transition 
+    let gamesTopPosition = games.getBoundingClientRect().top / vh - 1;
+    let gamesBottomPosition = games.getBoundingClientRect().bottom / vh;
+    let creatorWebsiteTopPosition = creatorWebsite.getBoundingClientRect().top / vh - 1;
+    let creatorWebsiteBottomPosition = creatorWebsite.getBoundingClientRect().bottom / vh;
 
-    var scrolled = window.pageYOffset;
+    // console.log( educationTopPosition , educationBottomPosition);
 
-    let contentPositionEducation = (education.getBoundingClientRect().top + education.getBoundingClientRect().bottom) / 2; // do top + bottom / 2 to get the midpoint of the content or make a div only around the text so it works out.
-    let contentPositionGames = (games.getBoundingClientRect().top + games.getBoundingClientRect().bottom) / 2;
-    let contentPositionCreatorWebsite = (creatorWebsite.getBoundingClientRect().top + creatorWebsite.getBoundingClientRect().bottom) / 2;
 
-    var rate = 5 * (scrolled - contentPositionEducation) / vh;
+    // education section
 
-    if (contentPositionEducation + vh/2 > vh) {
-        var rateEducation = (scrolled - contentPositionEducation + vh/2)/vh;
-        education.style.transfrom = "translate3d( 0vw, 0vh, 0vw) scale3d( 1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew( 0deg, 0deg)";
-        education.style.opacity = 3*rateEducation + "";
-        education.style.filter = 'blur('+ (2.5 - 5*rateEducation) +'px)';
-        
-    }
-    else { 
-        var rateEducation = (scrolled - contentPositionEducation - 3*vh/2) / vh;
-        education.style.opacity = 1 - 3 * rateEducation + "";
-        if (rateEducation > 0) {
-            education.style.filter = 'blur('+ 5*rateEducation +'px)';
-        }
+    if (educationTopPosition < 0 && educationTopPosition > -.25) {
+        let rateEducation = -5 * educationTopPosition - .2;
+        education.style.opacity = `${rateEducation}`;
+    } else if (educationBottomPosition > 0 && educationBottomPosition < .25) {
+        let rateEducation = 5 * educationBottomPosition - .2;
+        education.style.opacity =   `${rateEducation}`;
+    } else {
+        education.style.opacity = '1'
     }
 
-    if (contentPositionGames + vh/2 > vh + education.clientHeight) {
-        var rateGames = (scrolled - contentPositionGames + vh/2)/vh;
-        games.style.transfrom = "translate3d( 0vw, 0vh, 0vw) scale3d( 1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew( 0deg, 0deg)";
-        games.style.opacity = 3*rateGames + "";
-        games.style.filter = 'blur('+ (2.5 - 5*rateGames) +'px)';
-        
-    }
-    else { 
-        var rateGames = (scrolled - contentPositionGames - 2*vh) / vh;
-        games.style.opacity = 1 - 3 * rateGames + "";
-        if (rateGames > 0) {
-            games.style.filter = 'blur('+ 5*rateGames +'px)';
-        }
+    img[0].style.transform = `translateY(${0}vh) skew(${educationTopPosition * 7}deg, ${educationTopPosition * 7}deg)`;
+
+
+    // games section
+
+    if (gamesTopPosition < 0 && gamesTopPosition > -.25) {
+        let rateGames = -5 * gamesTopPosition - .2;
+        games.style.opacity = `${rateGames}`;
+    } else if (gamesBottomPosition > 0 && gamesBottomPosition < .25) {
+        let rateGames = 5 * gamesBottomPosition - .2;
+        games.style.opacity =   `${rateGames}`;
+    } else {
+        games.style.opacity = '1'
     }
 
-    if (contentPositionCreatorWebsite < vh + vh/2) {
-        var rateCreatorWebsite = ((contentPositionCreatorWebsite - vh) / vh);
 
-        creatorWebsite.style.transfrom = "translate3d( 0vw, 0vh, 0vw) scale3d( 1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew( 0deg, 0deg)";
-        creatorWebsite.style.opacity = .5 -3.5*rateCreatorWebsite + "";
-        creatorWebsite.style.filter = 'blur('+ (1.25 + 5*rateCreatorWebsite) +'px)';
-        
+    // creator website section
 
+    if (creatorWebsiteTopPosition < 0 && creatorWebsiteTopPosition > -.25) {
+        let rateCreatorWebsite = -5 * creatorWebsiteTopPosition - .2;
+        creatorWebsite.style.opacity = `${rateCreatorWebsite}`;
+    } else if (creatorWebsiteBottomPosition > 0 && creatorWebsiteBottomPosition < .25) {
+        let rateCreatorWebsite = 5 * creatorWebsiteBottomPosition - .2;
+        creatorWebsite.style.opacity =   `${rateCreatorWebsite}`;
+    } else {
+        creatorWebsite.style.opacity = '1'
     }
-});
+
+})
+
 
