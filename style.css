@@ -125,76 +125,68 @@ a {
 }
 
 
-@media (max-width: 800px){
-    .nav {
-        display: none; /* may change this */
-        position: fixed;
-        background-color: transparent;
-        color: var(--clr-dark);
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 100;
-    
-        border-radius: 50%;
-        transform: scale(1);
-        transition: all 1.5s cubic-bezier(.5, 0, .5, 1);
-    }
+
+header {
+    position: fixed;
+    padding: 1em 1em 0;
+    color: var(--clr-dark);
+    top: 0;
+    bottom: 1;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 100;
+
+    background: linear-gradient(180deg, var(--clr-light), transparent);
+    transition: 500ms ease-in-out;
+    transform: translateY(-50px);
 }
 
-@media (min-width: 800px) {
-    .nav-toggle {
-        display: none;
-    }
+.nav {
+    min-width: 300px;
+    padding-bottom: 0;
+}
 
-    header {
-        position: fixed;
-        padding: 1em 1em 0;
-        background: var(--clr-light);
-        color: var(--clr-dark);
-        top: 0;
-        bottom: 1;
-        left: 0;
-        right: 0;
-        z-index: 100;
-
-        background: linear-gradient(180deg, var(--clr-light), transparent);
-    }
-
-    header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .nav {
-        min-width: 600px;
-        padding-bottom: 0;
-    }
-
-    .nav__list {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: right;
-        list-style-type: none;
-    }
+.nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: right;
+    list-style-type: none;
 }
 
 /* intro section */
 
 .intro {
-    position: fixed; /* this changes to fixed when animationis finished */
-    top: 30vh;
-    bottom: 0;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition-property: opacity, filter;
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
     opacity: 1;
     z-index: 1;
 }
 
-.section__title--intro {
+@media (min-width: 450px) {
+    .full-name {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.75rem;
+    }
+}
+
+.first-name,
+.last-name {
     font-size: calc(var(--fs-h1) * 1.2);
     display: flex;
     justify-content: center;
@@ -202,7 +194,34 @@ a {
 
 .section__subtitle--intro {
     text-align: center;
-    margin-bottom: 15rem;
+    margin: 3vh 0 5vh;
+}
+
+.animation {
+    position: relative;
+    animation: intro-animation 2s ease-out 0s 1;
+}
+
+.intro__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+}
+
+.intro__btn {
+    color: var(--clr-dark);
+    background-color: transparent;
+    text-align: center;
+    border: 1px solid var(--clr-dark);
+    padding: 14px 33px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 0 var(--clr-dark);
+    transition: all 250ms ease-in-out;
+}
+
+.intro__btn:hover {
+    box-shadow: 0 0 0 0;
+    transform: translateY(3px);
 }
 
 @keyframes intro-animation {
@@ -232,16 +251,13 @@ a {
     }
 }
 
-.animation {
-    position: relative;
-    animation: intro-animation 2s ease-out 0s 1;
-}
-
-.animation--7th {
-    margin-right: 1.75rem;
-}
-
 /* all info sections */
+
+.education,
+.games,
+.creator-website {
+    transition: 200ms ease-out;
+}
 
 @media (max-width: 700px) {
     .education,
@@ -264,7 +280,7 @@ img {margin: 0 auto}
 
 .education {
     max-width: 1000px;
-    margin: 115vh auto 4rem;
+    margin: 105vh auto 4rem;
 }
 
 @media (min-width: 700px) {

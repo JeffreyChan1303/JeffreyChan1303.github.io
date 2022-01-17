@@ -7,23 +7,44 @@ for (let i = 0; i < animations.length; i++) {
         e.style.animation = '2s ease-out '+ (i*100) +'ms 1 intro-animation';
 }
 
+
+
 // prallax for intro
 
 const vh = window.innerHeight;
 const target = document.querySelector('.intro');
+const header = document.getElementsByTagName('header');
 
 window.addEventListener('scroll', () => {
     let scrolled = window.pageYOffset;
     let rate = scrolled / vh;
 
-    target.style.transform = `translate3d( 0vw, ${-10*rate}vh, `+10*rate+`vw) scale3d( ${1 - .5*rate}, ${1 - .5*rate}, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew( ${-5 * rate}deg, 0deg)`;
-    target.style.opacity = 1 - rate + '';
+    target.style.transform = `translate3d( 0vw, ${-20 * rate}vh, `+10*rate+`vw) scale3d( 1, 1, 1) rotateX(${-8 * rate}deg) rotateY(${8 * rate}deg) rotateZ(0deg) skew( 0deg, 0deg)`;
 
 
     if ( rate >= 0.25){
-        target.style.filter = `blur(${6*rate - 1.25}px)`;
+        target.style.opacity = `${1 - 2.2 * (rate - .25)}`;
+        target.style.filter = `blur(${10 * (rate - .35)}px)`;
+        target.style.zIndex = '-1';
+        // target.style.transform =
+    // } else if (rate >= .6) {
+    
     } else {
+        target.style.opacity = `1`;
         target.style.filter = `blur(0px)`;
+        target.style.zIndex = '1';
+    }
+
+    // header animation
+
+    if (rate >= .65) {
+        header[0].style.opacity = '1';
+        header[0].style.zIndex = '100';
+        header[0].style.transform = 'translateY(0)';
+    } else {
+        header[0].style.opacity = '0';
+        header[0].style.zIndex = '-1';
+        header[0].style.transform = 'translateY(-50px)';
     }
 
 })
@@ -45,49 +66,37 @@ window.addEventListener('scroll', () => {
     let creatorWebsiteTopPosition = creatorWebsite.getBoundingClientRect().top / vh - 1;
     let creatorWebsiteBottomPosition = creatorWebsite.getBoundingClientRect().bottom / vh;
 
-    // console.log( educationTopPosition , educationBottomPosition);
-
-
     // education section
 
-    if (educationTopPosition < 0 && educationTopPosition > -.25) {
-        let rateEducation = -5 * educationTopPosition - .2;
-        education.style.opacity = `${rateEducation}`;
-    } else if (educationBottomPosition > 0 && educationBottomPosition < .25) {
-        let rateEducation = 5 * educationBottomPosition - .2;
-        education.style.opacity =   `${rateEducation}`;
-    } else {
-        education.style.opacity = '1'
-    }
-
-    img[0].style.transform = `translateY(${0}vh) skew(${educationTopPosition * 7}deg, ${educationTopPosition * 7}deg)`;
+    infoAnimation(education, educationTopPosition, educationBottomPosition);
+    img[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
 
     // games section
 
-    if (gamesTopPosition < 0 && gamesTopPosition > -.25) {
-        let rateGames = -5 * gamesTopPosition - .2;
-        games.style.opacity = `${rateGames}`;
-    } else if (gamesBottomPosition > 0 && gamesBottomPosition < .25) {
-        let rateGames = 5 * gamesBottomPosition - .2;
-        games.style.opacity =   `${rateGames}`;
-    } else {
-        games.style.opacity = '1'
-    }
+    infoAnimation(games, gamesTopPosition, gamesBottomPosition);
+    img[1].style.transform = `translateY(${6 * gamesTopPosition + 5}vh)`;
+
 
 
     // creator website section
 
-    if (creatorWebsiteTopPosition < 0 && creatorWebsiteTopPosition > -.25) {
-        let rateCreatorWebsite = -5 * creatorWebsiteTopPosition - .2;
-        creatorWebsite.style.opacity = `${rateCreatorWebsite}`;
-    } else if (creatorWebsiteBottomPosition > 0 && creatorWebsiteBottomPosition < .25) {
-        let rateCreatorWebsite = 5 * creatorWebsiteBottomPosition - .2;
-        creatorWebsite.style.opacity =   `${rateCreatorWebsite}`;
-    } else {
-        creatorWebsite.style.opacity = '1'
-    }
+    infoAnimation(creatorWebsite, creatorWebsiteTopPosition, creatorWebsiteBottomPosition);
+    img[2].style.transform = `translateY(${6 * creatorWebsiteTopPosition + 5}vh)`;
 
 })
+
+function infoAnimation(element, topPosition, bottomPosition) {
+    if (topPosition < 0 && topPosition > -.25) {
+        element.style.opacity = `${-5 * topPosition - .2}`;
+        element.style.filter = `blur(${3 - (-topPosition * 12)}px)`;
+    } else if (bottomPosition > 0 && bottomPosition < .25) {
+        element.style.opacity =   `${5 * bottomPosition - .2}`;
+        element.style.filter = `blur(${3 - (bottomPosition * 12)}px)`
+    } else {
+        element.style.opacity = '1';
+        element.style.filter = 'blur(0px)';
+    }
+}
 
 
