@@ -15,16 +15,14 @@
 
 <body>
     <header>
-        <div class="logo">
-            <a class="logo__link" href="#">
-                <h3 class="logo__text">JC</h3>
-            </a>
-        </div>
+        <a class="logo__link" href="#">
+            <h3 class="logo__text">JC</h3>
+        </a>
         
         <nav class="nav">
             <ul class="nav__list">
                 <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-                <li class="nav__item"><a href="#" class="nav__link">Resume</a></li> <!-- add website link -->
+                <li class="nav__item"><a href="#" class="nav__link">Resume</a></li>
             </ul>
         </nav>
     </header>
@@ -72,8 +70,8 @@
             </div>
             <h3 class="section__subtitle section__subtitle--intro">SOFTWARE ENGINEER</h3>
             <div class="intro__buttons">
-                <button class="intro__btn intro__btn--project">Projects</button>
-                <button class="intro__btn intro__btn--resume">Resume</button>
+                <a class="intro__btn intro__btn--project" href="#projects">Projects</a>
+                <a class="intro__btn intro__btn--resume" href="#">Resume</a>
             </div>
         </div>
     </section>
@@ -94,13 +92,12 @@
     <section class="games" id="projects">
         <h2 class="section__title section__title--games">My Game Library</h2>
         <p class="section__subtitle section__subtitle--games">
-            This is a collection of all the games I have made. These games 
-            were originally made in other languages other than javascript so I 
-            needed to learn a framework that could convert code. This lead to me 
-            learning django for python and other software to work with the 
-            applications.
+            This is a future project that I plan to do which is creating 
+            a web application that can store and run a game or games through the browser. 
+            The goal would be to explore deeper into webdevelopment and 
+            application development.
         </p>
-        <a class="games__link" href="games.html">
+        <a class="games__link">
             <img class="games__img" src="tic-tac-toe-img.jpg">
         </a>
     </section>
@@ -114,25 +111,25 @@
             and self updating to the creators posts and only static 
             parts are needed to be updated with time.
         </p>
-        <a class="creator-website__link" href="/Franklin's Website/index.html">
+        <a class="creator-website__link" href="/Franklin's Website/index.html" target="_blank">
             <img class="creator-website__img" src="kicks-with-frank-logo.png" alt="Kicks with frank logo">
         </a>
     </section>
 
     <footer class="footer">
         <div class="footer__links">
-            <a class="footer__link" href="jeffreychan1303@gmail.com">Email</a>
+            <a class="footer__link" href="jeffrey_chan2@student.uml.edu">Email</a>
             <a class="footer__link" href="#">Resume</a>
-            <a class="footer__link" href="#">About</a>
+
         </div>
 
         <div class="hr"></div>
 
         <div class="social-list__links">
-            <a class="social-list__link" href="https://github.com/jfc2009/PortfolioWebsite">
+            <a class="social-list__link" href="https://github.com/jfc2009/PortfolioWebsite" target="_blank">
                 <i class="fab fa-github"></i>
             </a>
-            <a class="social-list__link" href="https://www.linkedin.com/in/jeffrey-chan-1303/">
+            <a class="social-list__link" href="https://www.linkedin.com/in/jeffrey-chan-1303/" target="_blank">
                 <i class="fab fa-linkedin"></i>
             </a>
         </div>

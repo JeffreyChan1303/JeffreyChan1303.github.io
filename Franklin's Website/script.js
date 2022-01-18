@@ -87,6 +87,9 @@ window.addEventListener('scroll', () => {
 const youtubeToken = 'AIzaSyBON-BmmukGYkb58Ebh8UFcC0tb8Mp0Qf8';
 const youtubeId = 'UC-4zDbwRwcpxzQ0xN27aSmQ';
 
+const youtubeVideoLink = document.querySelectorAll('.youtube-video--link');
+const youtubeThumbnail = document.querySelectorAll('.youtube-thumbnail');
+
 fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeId}&key=${youtubeToken}&HTTP/1.1`)
     .then(res => res.json())
     .then(data => {
@@ -114,18 +117,11 @@ fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id
                 const videoTwoUrl = `https://www.youtube.com/watch?v=${videoTwo.resourceId.videoId}`
                 const videoOneThumbnail = videoOne.thumbnails.maxres.url;
                 const videoTwoThumbnail = videoTwo.thumbnails.maxres.url;
-                const youtubeVideoLink = document.querySelectorAll('.youtube-video--link');
-                const youtubeThumbnail = document.querySelectorAll('.youtube-thumbnail');
-
-
-                console.log(youtubeVideoLink[0]);
 
                 youtubeVideoLink[0].href = videoOneUrl;
                 youtubeThumbnail[0].src = videoOneThumbnail;
                 youtubeVideoLink[1].href = videoTwoUrl;
                 youtubeThumbnail[1].src = videoTwoThumbnail;
-
-
             })
     })
 
@@ -200,5 +196,5 @@ function hide(object) {
 
 function show(object) {
     object.style.opacity = '1';
-    object.style.zIndex = '1';
+    object.style.zIndex = '2';
 }

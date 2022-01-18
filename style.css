@@ -72,13 +72,18 @@ img {
         opacity 250ms linear;
 }
 
-.games__link:hover,
 .creator-website__link:hover {
     transform: scale(1.05);
     opacity: .75;
-    transition:
-        transform 750ms cubic-bezier(.5, 0, .5, 1),
-        opacity 250ms linear;
+}
+
+a {
+    transition: 250ms ease-in-out;
+}
+
+a:hover {
+    transform: scale(1.1);
+    opacity: .75;
 }
 
 /* Typeography */
@@ -116,6 +121,11 @@ a {
 .nav__link {
     text-decoration: none;
     color: var(--clr-dark);
+}
+
+.nav__link:hover {
+    transform: scale(1.1);
+    opacity: .75;
 }
 
 .nav__list {
@@ -210,16 +220,18 @@ header {
 
 .intro__btn {
     color: var(--clr-dark);
+    font-size: 14px;
     background-color: transparent;
     text-align: center;
     border: 1px solid var(--clr-dark);
-    padding: 14px 33px;
+    padding: 11px 33px;
     cursor: pointer;
     box-shadow: 3px 3px 0 0 var(--clr-dark);
     transition: all 250ms ease-in-out;
 }
 
 .intro__btn:hover {
+    opacity: 1;
     box-shadow: 0 0 0 0;
     transform: translateY(3px);
 }
