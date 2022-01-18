@@ -44,7 +44,6 @@ const statistics = document.querySelector('.section__statistics');
 window.addEventListener('scroll', () => {
     let scrolled = window.scrollY;
     let vh = window.innerHeight;
-    let vw = window.innerWidth;
     let rate = scrolled / vh;
 
     let count = 0;
@@ -103,23 +102,41 @@ fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${y
 fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeId}&key=${youtubeToken}`)
     .then(res => res.json())
     .then(data => {
-        console.log(data);
         const uploadPlaylistId = data.items[0].contentDetails.relatedPlaylists.uploads;
 
         fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadPlaylistId}&key=${youtubeToken}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data.items[0].snippet);
-                const video1 = data.items[0].snippet;
-                const video2 = data.items[1].snippet;
-                console.log(video1.thumbnails.maxres.url)
+                const videoOne = data.items[0].snippet;
+                const videoTwo = data.items[1].snippet;
+                const videoOneUrl = `https://www.youtube.com/watch?v=${videoOne.resourceId.videoId}`
+                const videoTwoUrl = `https://www.youtube.com/watch?v=${videoTwo.resourceId.videoId}`
+                const videoOneThumbnail = videoOne.thumbnails.maxres.url;
+                const videoTwoThumbnail = videoTwo.thumbnails.maxres.url;
+                const youtubeVideoLink = document.querySelectorAll('.youtube-video--link');
+                const youtubeThumbnail = document.querySelectorAll('.youtube-thumbnail');
+
+
+                console.log(youtubeVideoLink[0]);
+
+                youtubeVideoLink[0].href = videoOneUrl;
+                youtubeThumbnail[0].src = videoOneThumbnail;
+                youtubeVideoLink[1].href = videoTwoUrl;
+                youtubeThumbnail[1].src = videoTwoThumbnail;
+
+
             })
     })
 
 
 
-const instagramToken = "IGQVJVWjRjSmE4aTAzMV9jcGN0TG9vYzE5ZA3p0OFpnRk1lUk1mVHRJUUJ4MmVqRk9fRlY2dFE3WkVMS0U1bXptQjBSQnNYak5kdEZAwakYwVFhNMDNyeUZATM0tGM25wSGF3OEktOXVBd0dRajZAaQjhHegZDZD"
-const instagramId = '40969919402';
+// Whilte I was setting up the Instagram Basic Display API, I found that the instagram api only worked if I used the Instagram Graph Api which needs specific permissions from the user that I didn't need to permit.
+// Therefore, I didn't want to use the instagram api because of the hassle and the sucurity risks it would cause for the client with the use of thier access token in the script file.
+
+/*  Instagram Api
+const instagramToken = "IGQVJVWjRjSmE4aTAzMVasdfjcGN0TG9vYzE5ZA3p0OFpnRk1lUk1mVHRJUUJ4MmVqRk9fRlY2dFE3WkVMS0U1bXptQjBSQnNYak5kdEZasdfakYwVFhNMDNyeUZATM0tGM25wEktOXVBd0dRajZAaQjhHegZDZD"
+const instagramId = '409124919402';
 
 fetch(`https://graph.instagram.com/me/media?fields=id,caption,media-type,permalink,thumbnail_url,username,media&access_token=${instagramToken}`)
     .then(res => res.json())
@@ -128,7 +145,7 @@ fetch(`https://graph.instagram.com/me/media?fields=id,caption,media-type,permali
 fetch(`https://graph.instagram.com/me/insights?fields=impressions,reach,follower-count&access_token=${instagramToken}`)
     .then(res => res.json())
     .then(data => console.log(data))
-
+*/
 
 // Content change buttons
 

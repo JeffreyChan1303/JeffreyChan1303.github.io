@@ -21,7 +21,7 @@
     --fs-body: 1rem;
 }
 
-@media (min-width: 800px){
+@media (min-width: 600px){
     :root {
         --fs-h1: 4.5rem;
         --fs-h2: 3rem;
@@ -52,8 +52,8 @@ section {
 
 img {
     display:block;
-    max-width: 75%;
-    max-height: 90%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 :focus {
@@ -217,6 +217,7 @@ p {
     border: solid white;
     border-width: 2px 0px 2px 0px;
     text-overflow: clip;
+    transition: 150ms ease-out;
 }
 
 .intro__text--part {
@@ -259,8 +260,7 @@ p {
 
 .content-up:hover,
 .content-down:hover {
-    transform: scale(1.1);
-    opacity: .9;
+    transform: scale(1.15);
 }
 
 .platform-logo__wrapper {
@@ -307,11 +307,15 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: center;
 
     transition: ease-in-out .5s;
     opacity: 0;
     z-index: 0;
 }
+
+.statistics__content {margin: 1vh auto}
+
 .statistics__youtube {
     opacity: 1;
     z-index: 1;
@@ -338,7 +342,7 @@ p {
 
     .statistics {
         top: calc(80px + 4vw);
-        bottom: 22vh;
+        bottom: 30vh;
     }
 
     .tiktok-embed {
@@ -378,6 +382,31 @@ p {
     }
 }
 
+/* youtube media  */
+
+.youtube-videos {
+    display: flex;
+    justify-content: center;
+    column-gap: calc(15px + 3vw);
+    margin: 20px 5vw;
+}
+
+.youtube-video--link {
+    transition: 250ms ease-in-out;
+}
+
+.youtube-video--link:hover {
+    opacity: .9;
+    transform: scale(1.1);
+}
+
+.youtube-thumbnail {
+    margin-right: 0px;
+    width: 200px;
+}
+
+
+
 /* button links */
 
 .statistics__btn {
@@ -402,4 +431,23 @@ p {
     transform: scale(1.1);
 }
 
+@keyframes youtube-animation {
+    0% {box-shadow: 0 0 10px 8px rgb(210, 0,0)}
+    50% {box-shadow: 0 0 20px 20px rgb(245, 0,0)}
+    100% {box-shadow: 0 0 10px 8px rgb(200, 0,0)}
+}
 
+.statistics__btn--youtube {
+    /* box-shadow: -3px -3px 0 0 rgb(255, 0,0), 3px 3px 0 0 rgb(255, 255, 255); */
+    animation: youtube-animation 10s ease-in-out infinite;
+}
+
+
+.statistics__btn--tiktok {
+    box-shadow: -3px -3px 0 0 rgb(37, 244, 238), 3px 3px 0 0 rgb(254, 44, 85);
+    margin: 40px 20px 0;
+}
+
+.statistics__btn--tiktok:hover {
+    box-shadow: 0 0 3px 5px rgba(37, 244, 238, .50), 0 0 3px 5px rgba(254, 44, 85, .50);
+}

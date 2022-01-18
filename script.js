@@ -19,7 +19,7 @@ window.addEventListener('scroll', () => {
     let scrolled = window.pageYOffset;
     let rate = scrolled / vh;
 
-    target.style.transform = `translate3d( 0vw, ${-20 * rate}vh, `+10*rate+`vw) scale3d( 1, 1, 1) rotateX(${-8 * rate}deg) rotateY(${8 * rate}deg) rotateZ(0deg) skew( 0deg, 0deg)`;
+    target.style.transform = `translate3d( 0vw, ${-20 * rate}vh, `+10*rate+`vw) scale3d( ${1 - rate / 20}, ${1 - rate / 20}, 1)`;
 
 
     if ( rate >= 0.25){
