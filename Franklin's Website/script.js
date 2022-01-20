@@ -110,7 +110,6 @@ fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id
         fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadPlaylistId}&key=${youtubeToken}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data.items[0].snippet);
                 const videoOne = data.items[0].snippet;
                 const videoTwo = data.items[1].snippet;
                 const videoOneUrl = `https://www.youtube.com/watch?v=${videoOne.resourceId.videoId}`
@@ -151,28 +150,28 @@ const arrowDown = document.querySelector('.content-down');
 const statisticsBackground = document.querySelector('.section__statistics');
 const platformLogo = document.querySelectorAll('.platform-logo');
 
-let current = 0;
+let currentPlatform = 0;
 
 arrowUp.addEventListener('click', () =>{
-    hide(slider[current]);
-    hide(platformLogo[current])
-    current = current - 1;
-    if (current < 0) {current = 2};
-    show(slider[current]);
-    show(platformLogo[current]);
+    hide(slider[currentPlatform]);
+    hide(platformLogo[currentPlatform])
+    currentPlatform = currentPlatform - 1;
+    if (currentPlatform < 0) {currentPlatform = 2};
+    show(slider[currentPlatform]);
+    show(platformLogo[currentPlatform]);
 
-    statisticsBackgroundColor(slider, current);
+    statisticsBackgroundColor(slider, currentPlatform);
 })
 
 arrowDown.addEventListener('click', () =>{
-    hide(slider[current]);
-    hide(platformLogo[current]);
-    current = current + 1;
-    if (current > 2) {current = 0};
-    show(slider[current]);
-    show(platformLogo[current]);
+    hide(slider[currentPlatform]);
+    hide(platformLogo[currentPlatform]);
+    currentPlatform = currentPlatform + 1;
+    if (currentPlatform > 2) {currentPlatform = 0};
+    show(slider[currentPlatform]);
+    show(platformLogo[currentPlatform]);
 
-    statisticsBackgroundColor(slider, current);
+    statisticsBackgroundColor(slider, currentPlatform);
 })
 
 const originalColor = document.querySelector('.background');
@@ -185,7 +184,7 @@ function statisticsBackgroundColor(object, currentIndex) {
         statisticsBackground.style.background = 'rgb(105,90,170)';
     }
     if (object[currentIndex].classList.contains('statistics__tiktok')) {
-        statisticsBackground.style.background = 'rgb(45,45,60)';
+        statisticsBackground.style.background = 'rgb(30,30,45)';
     }
 }
 
@@ -198,3 +197,32 @@ function show(object) {
     object.style.opacity = '1';
     object.style.zIndex = '2';
 }
+
+// instagram carousel section
+
+const instagramCarousel = document.querySelectorAll('.instagram-img');
+let instagramCarouselArr = Array.from(instagramCarousel);
+
+
+setInterval(() => {
+    instagramCarouselArr = shiftRight(instagramCarouselArr);
+    carouselStyle(instagramCarouselArr[0], 'translateX(-70px) scale(.8)', '.4', '0', 'blur(2px)');
+    carouselStyle(instagramCarouselArr[1], 'translateX(-35px) scale(.9)', '.6', '1', 'blur(1px)');
+    carouselStyle(instagramCarouselArr[2], 'translateX(0px) scale(1)', '1', '2', 'blur(0px)');
+    carouselStyle(instagramCarouselArr[3], 'translateX(35px) scale(.9)', '.6', '1', 'blur(1px)');
+    carouselStyle(instagramCarouselArr[4], 'translateX(70px) scale(.8)', '.4', '0', 'blur(2px)');
+}, 5000)
+
+function carouselStyle(object, transform, opacity, zIndex, filter) {
+    object.style.transform = transform;
+    object.style.opacity = opacity;
+    object.style.zIndex = zIndex;
+    object.style.filter = filter;
+}
+
+function shiftRight(arr) {
+    let temp = arr.pop();
+    arr.unshift(temp);
+    return arr;
+}
+

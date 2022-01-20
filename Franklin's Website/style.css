@@ -410,6 +410,8 @@ p {
 
 .youtube-video--link {
     transition: 250ms ease-in-out;
+    border: solid var(--clr-dark) 6px;
+    background: var(--clr-dark);
 }
 
 .youtube-video--link:hover {
@@ -422,7 +424,41 @@ p {
     width: 200px;
 }
 
+/* instgram media  */
 
+.instagram-carousel {
+    display: flex;
+    margin-top: 20px;
+    height: 200px;
+    justify-content: center;
+}
+
+.instagram-img {
+    position: absolute;
+    max-width: 200px;
+}
+
+@media (max-width: 600px) {
+    .instagram-img {max-width: 150px}
+    .instagram-carousel {height: 150px}
+}
+
+.instagram-img {
+    transition: 600ms ease-in-out;
+    border: solid black 6px;
+}
+
+.instagram-img--one {transform: translateX(-60px) scale(.8)}
+.instagram-img--two {transform: translateX(-30px) scale(.9)}
+.instagram-img--three {transform: translateX(0px) scale(1)}
+.instagram-img--four {
+    transform: translateX(30px) scale(.9);
+    z-index: -1;
+}
+.instagram-img--five {
+    transform: translateX(60px) scale(.8);
+    z-index: -2;
+}
 
 /* button links */
 
@@ -461,6 +497,28 @@ p {
     margin: 40px 20px 0;
 }
 
+@keyframes instagram-animation {
+    0% {box-shadow: 0 0 20px 10px rgb(70, 70, 200)}
+    12.5% {box-shadow: 0 0 20px 9px rgb(188, 42, 141)}
+    25% {box-shadow: 0 0 20px 10px rgb(138, 58, 185),}
+    37.5% {box-shadow: 0 0 20px 12px rgb(253, 89, 73)}
+    50% {box-shadow: 0 0 20px 13px rgb(190, 150, 115)}
+    62.5% {box-shadow: 0 0 20px 12px rgb(253, 89, 73)}
+    75% {box-shadow: 0 0 20px 10px rgb(138, 58, 185),}
+    87.5% {box-shadow: 0 0 20px 9px rgb(188, 42, 141)}
+    100% {box-shadow: 0 0 20px 10px rgb(70, 70, 200)}
+}
+
+.statistics__btn--instagram {
+    animation: instagram-animation 10s ease-in-out infinite;
+}
+
 .statistics__btn--tiktok:hover {box-shadow: 0 0 3px 5px rgba(37, 244, 238, .50), 0 0 3px 5px rgba(254, 44, 85, .50)}
 
 .tiktok-video-links {display: flex}
+
+
+
+
+
+
