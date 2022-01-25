@@ -114,8 +114,11 @@ fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id
                 const videoTwo = data.items[1].snippet;
                 const videoOneUrl = `https://www.youtube.com/watch?v=${videoOne.resourceId.videoId}`
                 const videoTwoUrl = `https://www.youtube.com/watch?v=${videoTwo.resourceId.videoId}`
-                const videoOneThumbnail = videoOne.thumbnails.maxres.url;
-                const videoTwoThumbnail = videoTwo.thumbnails.maxres.url;
+
+                const videoOneThumbnail = videoOne.thumbnails.high.url;
+                const videoTwoThumbnail = videoTwo.thumbnails.high.url;
+
+                console.log(data.items[0].snippet);
 
                 youtubeVideoLink[0].href = videoOneUrl;
                 youtubeThumbnail[0].src = videoOneThumbnail;
