@@ -26,8 +26,6 @@ window.addEventListener('scroll', () => {
         target.style.opacity = `${1 - 2.2 * (rate - .25)}`;
         target.style.filter = `blur(${10 * (rate - .35)}px)`;
         target.style.zIndex = '-1';
-        // target.style.transform =
-    // } else if (rate >= .6) {
     
     } else {
         target.style.opacity = `1`;
@@ -55,7 +53,9 @@ window.addEventListener('scroll', () => {
 const education = document.querySelector('.education');
 const games = document.querySelector('.games');
 const creatorWebsite = document.querySelector('.creator-website');
-const img = document.getElementsByTagName('img');
+const img = document.querySelectorAll('.img-parallax');
+const sectionTitle = document.querySelectorAll('.section__title');
+const sectionSubtitle = document.querySelectorAll('.section__subtitle');
 
 
 window.addEventListener('scroll', () => {
@@ -69,20 +69,20 @@ window.addEventListener('scroll', () => {
     // education section
 
     infoAnimation(education, educationTopPosition, educationBottomPosition);
-    img[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
-
+    sectionTitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionSubtitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
     // games section
 
     infoAnimation(games, gamesTopPosition, gamesBottomPosition);
-    img[1].style.transform = `translateY(${6 * gamesTopPosition + 5}vh)`;
-
-
+    sectionTitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionSubtitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
     // creator website section
 
     infoAnimation(creatorWebsite, creatorWebsiteTopPosition, creatorWebsiteBottomPosition);
-    img[2].style.transform = `translateY(${6 * creatorWebsiteTopPosition + 5}vh)`;
+    sectionTitle[2].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionSubtitle[2].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
 })
 
