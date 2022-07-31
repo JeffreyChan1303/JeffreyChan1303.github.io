@@ -51,7 +51,7 @@ window.addEventListener('scroll', () => {
 //animation for sections 
 
 const education = document.querySelector('.education');
-const games = document.querySelector('.games');
+const juicyBugTracker = document.querySelector('.juicy-bug-tracker');
 const creatorWebsite = document.querySelector('.creator-website');
 const img = document.querySelectorAll('.img-parallax');
 const sectionTitle = document.querySelectorAll('.section__title');
@@ -61,8 +61,8 @@ const sectionSubtitle = document.querySelectorAll('.section__subtitle');
 window.addEventListener('scroll', () => {
     let educationTopPosition = education.getBoundingClientRect().top / vh - 1; //position of the top of the element relative to the bottom of the window!!
     let educationBottomPosition = education.getBoundingClientRect().bottom / vh; // after there is only 15vh in sight of the ovject, begin transition 
-    let gamesTopPosition = games.getBoundingClientRect().top / vh - 1;
-    let gamesBottomPosition = games.getBoundingClientRect().bottom / vh;
+    let juicyBugTrackerTopPosition = juicyBugTracker.getBoundingClientRect().top / vh - 1;
+    let juicyBugTrackerBottomPosition = juicyBugTracker.getBoundingClientRect().bottom / vh;
     let creatorWebsiteTopPosition = creatorWebsite.getBoundingClientRect().top / vh - 1;
     let creatorWebsiteBottomPosition = creatorWebsite.getBoundingClientRect().bottom / vh;
 
@@ -72,11 +72,13 @@ window.addEventListener('scroll', () => {
     sectionTitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
     sectionSubtitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
-    // games section
+    // juicyBugTracker section
 
-    infoAnimation(games, gamesTopPosition, gamesBottomPosition);
+    infoAnimation(juicyBugTracker, juicyBugTrackerTopPosition, juicyBugTrackerBottomPosition);
     sectionTitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
     sectionSubtitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+
+
 
     // creator website section
 

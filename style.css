@@ -358,6 +358,45 @@ img {margin: 0 auto}
     transition:scale 2.5s ease-in-out;
 }
 
+/* ign video player section */
+
+.ign-video-player {
+    max-width: 1000px;
+    margin: 4rem auto;
+}
+
+@media (min-width: 700px) {
+    .ign-video-player {
+        display: grid;
+        grid-template-columns: .65fr .35fr;
+        grid-template-areas:
+            "title img"
+            "subtitle img";
+        grid-column-gap: 1em;
+    }
+
+    .section__title--ign-video-player {
+        grid-area: title;
+    }
+
+    .section__subtitle--ign-video-player {
+        grid-area: subtitle;
+    }
+
+    .ign-video-player__link {
+        grid-area: img;
+    }
+
+    .ign-video-player__img {
+        min-width: 100%;
+    }
+}
+
+.ign-video-player__link {
+    animation: expand-and-contract 5s ease-in-out 0s infinite;
+    transition:scale 2.5s ease-in-out;
+}
+
 /* creator website section */
 
 .creator-website {
@@ -368,10 +407,10 @@ img {margin: 0 auto}
 @media (min-width: 700px) {
     .creator-website {
         display: grid;
-        grid-template-columns: .65fr .35fr;
+        grid-template-columns: .35fr .65fr;
         grid-template-areas:
-            "title img"
-            "subtitle img";
+            "img title"
+            "img subtitle";
         grid-column-gap: 1em;
     }
 
