@@ -52,6 +52,7 @@ window.addEventListener('scroll', () => {
 
 const education = document.querySelector('.education');
 const juicyBugTracker = document.querySelector('.juicy-bug-tracker');
+const ignVideoPlayer = document.querySelector('.ign-video-player');
 const creatorWebsite = document.querySelector('.creator-website');
 const img = document.querySelectorAll('.img-parallax');
 const sectionTitle = document.querySelectorAll('.section__title');
@@ -63,6 +64,8 @@ window.addEventListener('scroll', () => {
     let educationBottomPosition = education.getBoundingClientRect().bottom / vh; // after there is only 15vh in sight of the ovject, begin transition 
     let juicyBugTrackerTopPosition = juicyBugTracker.getBoundingClientRect().top / vh - 1;
     let juicyBugTrackerBottomPosition = juicyBugTracker.getBoundingClientRect().bottom / vh;
+    let ignVideoPlayerTopPosition = ignVideoPlayer.getBoundingClientRect().top / vh - 1;
+    let ignVideoPlayerBottomPosition = ignVideoPlayer.getBoundingClientRect().bottom / vh;
     let creatorWebsiteTopPosition = creatorWebsite.getBoundingClientRect().top / vh - 1;
     let creatorWebsiteBottomPosition = creatorWebsite.getBoundingClientRect().bottom / vh;
 
@@ -78,7 +81,11 @@ window.addEventListener('scroll', () => {
     sectionTitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
     sectionSubtitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
+    // ign video player section
 
+    infoAnimation(ignVideoPlayer, ignVideoPlayerTopPosition, ignVideoPlayerBottomPosition);
+    sectionTitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionSubtitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
     // creator website section
 
