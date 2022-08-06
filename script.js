@@ -71,6 +71,7 @@ window.addEventListener('scroll', () => {
 
     // education section
 
+    console.log(creatorWebsiteTopPosition)
     infoAnimation(education, educationTopPosition, educationBottomPosition);
     sectionTitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
     sectionSubtitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
@@ -84,14 +85,14 @@ window.addEventListener('scroll', () => {
     // ign video player section
 
     infoAnimation(ignVideoPlayer, ignVideoPlayerTopPosition, ignVideoPlayerBottomPosition);
-    sectionTitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
-    sectionSubtitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionTitle[2].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionSubtitle[2].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
     // creator website section
 
     infoAnimation(creatorWebsite, creatorWebsiteTopPosition, creatorWebsiteBottomPosition);
-    sectionTitle[2].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
-    sectionSubtitle[2].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionTitle[3].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
+    sectionSubtitle[3].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
 })
 
