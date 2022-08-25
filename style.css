@@ -250,14 +250,14 @@ header {
 /* all info sections */
 
 .education,
-.juicy-bug-tracker,
+.track-my-projects,
 .creator-website {
     transition: 200ms ease-out;
 }
 
 @media (max-width: 700px) {
     .education,
-    .juicy-bug-tracker,
+    .track-my-projects,
     .creator-website {
         display: flex;
         flex-direction: column;
@@ -318,16 +318,16 @@ img {margin: 0 auto}
     }
 }
 
-/* juicy-bug-tracker section */ 
+/* track-my-projects section */ 
 
-.juicy-bug-tracker {
+.track-my-projects {
     max-width: 1000px;
     margin: 4rem auto;
 }
 
 
 @media (min-width: 700px) {
-    .juicy-bug-tracker {
+    .track-my-projects {
         display: grid;
         grid-template-columns: .35fr .65fr;
         grid-template-areas:
@@ -336,24 +336,24 @@ img {margin: 0 auto}
         grid-column-gap: 1em;
     }
 
-    .section__title--juicy-bug-tracker {
+    .section__title--track-my-projects {
         grid-area: title;
     }
 
-    .section__subtitle--juicy-bug-tracker {
+    .section__subtitle--track-my-projects {
         grid-area: subtitle;
     }
 
-    .juicy-bug-tracker__link {
+    .track-my-projects__link {
         grid-area: img;
     }
 
-    .juicy-bug-tracker__img {
+    .track-my-projects__img {
         min-width: 100%
     }
 }
 
-.juicy-bug-tracker__link {
+.track-my-projects__link {
     animation: expand-and-contract 5s ease-in-out 0s infinite;
     transition:scale 2.5s ease-in-out;
 }

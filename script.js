@@ -51,7 +51,7 @@ window.addEventListener('scroll', () => {
 //animation for sections 
 
 const education = document.querySelector('.education');
-const juicyBugTracker = document.querySelector('.juicy-bug-tracker');
+const trackMyProjects = document.querySelector('.track-my-projects');
 const ignVideoPlayer = document.querySelector('.ign-video-player');
 const creatorWebsite = document.querySelector('.creator-website');
 const img = document.querySelectorAll('.img-parallax');
@@ -62,8 +62,8 @@ const sectionSubtitle = document.querySelectorAll('.section__subtitle');
 window.addEventListener('scroll', () => {
     let educationTopPosition = education.getBoundingClientRect().top / vh - 1; //position of the top of the element relative to the bottom of the window!!
     let educationBottomPosition = education.getBoundingClientRect().bottom / vh; // after there is only 15vh in sight of the ovject, begin transition 
-    let juicyBugTrackerTopPosition = juicyBugTracker.getBoundingClientRect().top / vh - 1;
-    let juicyBugTrackerBottomPosition = juicyBugTracker.getBoundingClientRect().bottom / vh;
+    let trackMyProjectsTopPosition = trackMyProjects.getBoundingClientRect().top / vh - 1;
+    let trackMyProjectsBottomPosition = trackMyProjects.getBoundingClientRect().bottom / vh;
     let ignVideoPlayerTopPosition = ignVideoPlayer.getBoundingClientRect().top / vh - 1;
     let ignVideoPlayerBottomPosition = ignVideoPlayer.getBoundingClientRect().bottom / vh;
     let creatorWebsiteTopPosition = creatorWebsite.getBoundingClientRect().top / vh - 1;
@@ -76,9 +76,9 @@ window.addEventListener('scroll', () => {
     sectionTitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
     sectionSubtitle[0].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
-    // juicyBugTracker section
+    // trackMyProjects section
 
-    infoAnimation(juicyBugTracker, juicyBugTrackerTopPosition, juicyBugTrackerBottomPosition);
+    infoAnimation(trackMyProjects, trackMyProjectsTopPosition, trackMyProjectsBottomPosition);
     sectionTitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
     sectionSubtitle[1].style.transform = `translateY(${6 * educationTopPosition + 5}vh)`;
 
